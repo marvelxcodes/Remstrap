@@ -1,4 +1,4 @@
-import './globals.css';
+import './globals.scss';
 import { PropsWithChildren } from 'react';
 
 export const metadata = {
