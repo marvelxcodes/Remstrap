@@ -1,7 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
+import Query from '@/slices/Query';
+import Alert from '@/slices/Alert';
+import ActiveProject from '@/slices/ActiveProject';
+import Projects from '@/slices/Projects';
+import Modal from '@/slices/Modal';
 
 const store = configureStore({
-	reducer: {},
+	reducer: {
+		Query,
+		Alert,
+		Modal,
+		ActiveProject,
+		Projects,
+	},
 });
 
 export default store;
