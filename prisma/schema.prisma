@@ -9,10 +9,12 @@ datasource db {
 }
 
 model Project {
-  id     String @id @unique @default(uuid())
-  userId String
-  name   String
-  size   String
+  id        String   @id @unique @default(uuid())
+  userId    String
+  name      String
+  size      String
+  image     String
+  createdOn DateTime @default(now())
 
   properties Properties?
 }
@@ -22,10 +24,7 @@ model Properties {
   Project   Project @relation(fields: [projectId], references: [id])
   projectId String  @unique
 
-  image   String
   details Json
-
-  createdOn DateTime @default(now())
 }
 
 model Feedback {
