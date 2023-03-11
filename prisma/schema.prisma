@@ -13,7 +13,7 @@ model Project {
   userId    String
   name      String
   size      String
-  image     String
+  image     String   @default("")
   createdOn DateTime @default(now())
 
   properties Properties?
