@@ -5,3 +5,7 @@ export type ProjectType = {
 	size: string;
 	properties: {};
 };
+
+export type NextContext = {
+	params: { [key: string]: string };
+};
