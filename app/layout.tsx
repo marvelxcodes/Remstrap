@@ -1,5 +1,6 @@
 import './globals.scss';
 import { PropsWithChildren } from 'react';
+import Providers from '@/components/Providers';
 
 export const metadata = {
 	title: 'Remstrap',
@@ -21,7 +22,9 @@ function RootLayout({ children }: PropsWithChildren) {
 				/>
 				<meta httpEquiv='Content-Type' content='text/html;charset=UTF-8' />
 			</head>
-			<body>{children}</body>
+			<Providers>
+				<body>{children}</body>
+			</Providers>
 		</html>
 	);
 }
