@@ -3,6 +3,7 @@ import { PropsWithChildren } from 'react';
 
 export const metadata = {
 	title: 'Remstrap',
+	icons: '/favicon.svg',
 };
 
 function RootLayout({ children }: PropsWithChildren) {
