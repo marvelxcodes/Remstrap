@@ -3,11 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
+		"dev": "next dev --turbo",
+		"build": "next build --turbo",
 		"start": "next start",
-		"lint": "next lint",
-		"prepare": "husky install"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.11.4",
