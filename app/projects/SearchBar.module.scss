@@ -1,0 +1,101 @@
+.smTxt {
+	font-size: 2rem;
+	padding-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+	.newProjectBtn {
+		height: 4rem;
+		width: 4rem;
+		border-radius: 50%;
+
+		position: fixed;
+		right: 3rem;
+		bottom: 4rem;
+		z-index: 20;
+
+		color: #fff;
+		background-color: #6200ff;
+		box-shadow: 0 0 1rem #80808076;
+	}
+
+	.xlTxt {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.newProjectBtn {
+		height: 3rem;
+		width: 10rem;
+		border-radius: 0.5rem;
+		position: relative;
+
+		font-weight: 500;
+		font-size: 1rem;
+		color: #fff;
+		background-color: #6200ff;
+
+		overflow: hidden;
+		cursor: pointer;
+
+		&::after {
+			width: 2rem;
+			height: 6rem;
+			position: absolute;
+			top: -1.5rem;
+			left: -3rem;
+			rotate: 45deg;
+
+			background-color: #fffefe88;
+			box-shadow: 0 0 1rem;
+
+			content: '';
+			transition: 0.5s;
+		}
+
+		&:hover::after {
+			transform: translate(16rem, -16rem);
+		}
+	}
+	.smTxt {
+		display: none;
+	}
+}
+
+.wrapper {
+	height: 3rem;
+	width: 80vw;
+	max-width: 30rem;
+	border-radius: 0.5rem;
+
+	display: grid;
+	grid-template-columns: 3rem auto;
+	place-items: center start;
+
+	background-color: #cd82ff5d;
+}
+
+.searchIcon {
+	height: 1.5rem;
+	padding: 0 0.8rem;
+	color: #6200ff;
+}
+
+.input {
+	height: 3rem;
+	width: 100%;
+	padding-right: 0.5rem;
+
+	font-family: 'Poppins', monospace;
+	font-size: 1.2rem;
+	font-weight: 400;
+
+	background-color: #00000000;
+	color: #6200ff;
+
+	&::placeholder {
+		color: #cd82ff5d;
+		user-select: none;
+	}
+}
