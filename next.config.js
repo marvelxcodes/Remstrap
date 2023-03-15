@@ -4,6 +4,9 @@ const nextConfig = {
 		appDir: true,
 		// swcPlugins: [['next-superjson-plugin', {}]],
 	},
+	images: {
+		domains: ['images.clerk.dev'],
+	},
 };
 
 module.exports = nextConfig;
