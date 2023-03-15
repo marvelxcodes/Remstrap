@@ -7,7 +7,7 @@ const querySlice = createSlice({
 	name: 'query',
 	reducers: {
 		setQuery: (state, action) => {
-			state = action.payload;
+			return action.payload;
 		},
 	},
 });

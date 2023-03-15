@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import Query from '@/slices/Query';
 import Alert from '@/slices/Alert';
 import ActiveProject from '@/slices/ActiveProject';
-import Projects from '@/slices/Projects';
 import Modal from '@/slices/Modal';
 
 const store = configureStore({
@@ -11,7 +10,6 @@ const store = configureStore({
 		Alert,
 		Modal,
 		ActiveProject,
-		Projects,
 	},
 });
 
