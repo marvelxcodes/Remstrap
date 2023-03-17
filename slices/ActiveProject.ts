@@ -1,11 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ProjectType } from '@/utils/types';
-import { useDispatch } from 'react-redux';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: ProjectType = {
+type InitialPropsType = {
+	id: string;
+	name: string;
+	size: string;
+	properties: {};
+};
+
+const initialState = {
 	id: '',
 	name: '',
-	userId: '',
 	size: '',
 	properties: {},
 };
@@ -14,8 +18,8 @@ const activeProjectSlice = createSlice({
 	initialState,
 	name: 'activeProject',
 	reducers: {
-		setActiveProject: (state, action) => {
-			state = action.payload;
+		setActiveProject: (_state, action: PayloadAction<InitialPropsType>) => {
+			return action.payload;
 		},
 	},
 });

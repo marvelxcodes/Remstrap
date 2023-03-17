@@ -9,11 +9,13 @@ const alertSlice = createSlice({
 	name: 'alert',
 	reducers: {
 		openAlert: (state, action) => {
-			state = action.payload;
+			return state.title ? state : action.payload;
 		},
-		closeAlert: (state) => {
-			state.description = '';
-			state.title = '';
+		closeAlert: (_state) => {
+			return {
+				title: '',
+				description: '',
+			};
 		},
 	},
 });

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import Query from '@/slices/Query';
+import Projects from '@/slices/Projects';
 import Alert from '@/slices/Alert';
 import ActiveProject from '@/slices/ActiveProject';
 import Modal from '@/slices/Modal';
 
 const store = configureStore({
 	reducer: {
-		Query,
+		Projects,
 		Alert,
 		Modal,
 		ActiveProject,
@@ -14,5 +14,7 @@ const store = configureStore({
 });
 
 export default store;
+
+// Types
 export type StateType = ReturnType<typeof store.getState>;
-export type DispatchType = typeof store.dispatch;
+export const dispatch = store.dispatch;
