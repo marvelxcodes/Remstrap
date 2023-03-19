@@ -3,6 +3,7 @@ import { PropsWithChildren } from 'react';
 import Providers from '@/components/Providers';
 
 import { ClerkProvider } from '@clerk/nextjs/app-beta';
+import Overlays from '@/components/Overlays';
 
 export const metadata = {
 	title: 'Remstrap',
@@ -30,7 +31,10 @@ function RootLayout({ children }: PropsWithChildren) {
 		<ClerkProvider>
 			<Providers>
 				<html lang='en'>
-					<body>{children}</body>
+					<body>
+						{children}
+						<Overlays />
+					</body>
 				</html>
 			</Providers>
 		</ClerkProvider>
