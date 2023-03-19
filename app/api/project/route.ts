@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 		size: string;
 	};
 	try {
-		await prisma.project.create({
+		const project = await prisma.project.create({
 			data: {
 				userId,
 				size,
@@ -21,9 +21,7 @@ export async function POST(req: NextRequest) {
 				},
 			},
 		});
-		return NextResponse.json({
-			success: true,
-		});
+		return NextResponse.json(project);
 	} catch {
 		return NextResponse.json({ success: false });
 	}
@@ -36,7 +34,7 @@ export async function PATCH(req: NextRequest) {
 		name: string;
 	};
 	try {
-		await prisma.project.update({
+		const project = await prisma.project.update({
 			where: {
 				id,
 			},
@@ -44,9 +42,7 @@ export async function PATCH(req: NextRequest) {
 				name,
 			},
 		});
-		return NextResponse.json({
-			success: true,
-		});
+		return NextResponse.json(project);
 	} catch {
 		return NextResponse.json({ success: false });
 	}
@@ -60,7 +56,7 @@ export async function PUT(req: NextRequest) {
 	};
 
 	try {
-		await prisma.properties.update({
+		const properties = await prisma.properties.update({
 			where: {
 				projectId,
 			},
@@ -69,13 +65,12 @@ export async function PUT(req: NextRequest) {
 			},
 		});
 
-		return NextResponse.json({
-			success: true,
-		});
+		return NextResponse.json(properties);
 	} catch {
 		return NextResponse.json({ success: false });
 	}
 }
+
 // Deletes a File
 export async function DELETE(req: NextRequest) {
 	const { projectId } = (await req.json()) as {
