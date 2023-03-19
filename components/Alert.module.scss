@@ -1,0 +1,38 @@
+.wrapper {
+	min-width: 12rem;
+	min-height: 6rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+
+	position: fixed;
+	right: 2rem;
+	bottom: 2rem;
+	z-index: 50;
+
+	background-color: #fff;
+	box-shadow: 0 0 1rem #a6a6a6b4;
+}
+
+.stripe {
+	height: 6px;
+	width: 100%;
+
+	background-color: #6200ff;
+}
+
+.container {
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+}
+
+.title {
+	color: #6200ff;
+	font-size: clamp(1.2rem, 5vw, 2rem);
+}
+
+.description {
+	color: #7c7c7c;
+	font-size: clamp(0.8rem, 2vw, 1.2rem);
+	font-weight: 500;
+}
