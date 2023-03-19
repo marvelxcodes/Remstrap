@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type ModalStateType = {
 	currentModal: string;
-	data: {};
+	data: any;
 };
 
 const initialState: ModalStateType = {
