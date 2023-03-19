@@ -1,6 +1,6 @@
 'use client';
 import { openModal } from '@/slices/Modal';
-import { remove, rename } from '@/slices/Projects';
+import { remove, rename } from '@/slices/Query';
 import { dispatch } from '@/utils/store';
 import { useClerk } from '@clerk/nextjs';
 import Image from 'next/image';
