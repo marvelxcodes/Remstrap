@@ -10,6 +10,7 @@ export async function GET(req: Request, context: NextContext) {
 				userId,
 			},
 			select: {
+				id: true,
 				name: true,
 				image: true,
 				size: true,
