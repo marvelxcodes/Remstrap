@@ -1,66 +1,67 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProjectType } from '@/utils/types';
+import { ProjectsType, ProjectType } from '@/utils/types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-type InitialStateType = {
-	query: string;
-	projects: ProjectType[];
-};
+export const ProjectsAPI = createApi({
+	reducerPath: 'projects',
+	baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:3000/api` }),
+	endpoints: (builder) => ({
+		// Fetches all projects of current User
+		fetchProjects: builder.query<ProjectsType[], string>({
+			query: (userId) => `/${userId}`,
+		}),
 
-const initialState: InitialStateType = {
-	projects: [],
-	query: '',
-};
+		// Fetches project of currently opened Project
+		fetchProject: builder.query<ProjectType, string>({
+			query: (projectId) => `/project/${projectId}`,
+		}),
 
-const querySlice = createSlice({
-	initialState,
-	name: 'projects',
-	reducers: {
-		setQuery: (state, action: PayloadAction<string>) => {
-			return {
-				query: action.payload,
-				projects: state.projects.filter((project) => {
-					if (project.name.includes(action.payload)) {
-						return project;
-					}
-				}),
-			};
-		},
+		// Created a new Project
+		createProject: builder.mutation({
+			query: (body: { name: string; size: string; userId: string }) => ({
+				url: '/project',
+				method: 'POST',
+				body,
+			}),
+		}),
 
-		setProjects: (state, action: PayloadAction<ProjectType[]>) => {
-			return {
-				...state,
-				projects: action.payload,
-			};
-		},
+		// Deletes a Project
+		deleteProject: builder.mutation({
+			query: (body: { projectId: string }) => ({
+				url: '/project',
+				method: 'DELETE',
+				body,
+			}),
+		}),
 
-		remove: (state, action: PayloadAction<string>) => {
-			return {
-				...state,
-				projects: state.projects.filter((project) => {
-					if (!project.name.includes(action.payload)) {
-						return project;
-					}
-				}),
-			};
-		},
+		// Called when currently opened Project is saved
+		updateProject: builder.mutation({
+			query: (body: {
+				projectId: string;
+				details: { [name: string]: string };
+			}) => ({
+				url: '/project',
+				method: 'PUT',
+				body,
+			}),
+		}),
 
-		create: (state, action: PayloadAction<ProjectType>) => {
-			return { ...state, projects: [...state.projects, action.payload] };
-		},
-
-		rename: (state, action: PayloadAction<{ id: string; name: string }>) => {
-			return {
-				...state,
-				projects: state.projects.filter((project) => {
-					if (project.id === action.payload.id) {
-						return { ...project, name: action.payload.name };
-					}
-				}),
-			};
-		},
-	},
+		// Called when a project is renamed in "/projects" route
+		renameProject: builder.mutation({
+			query: (body: { id: string; name: string }) => ({
+				url: '/project',
+				method: 'PATCH',
+				body,
+			}),
+		}),
+	}),
 });
 
-export const { setQuery, create, rename, setProjects, remove } =
-	querySlice.actions;
-export default querySlice.reducer;
+export default ProjectsAPI;
+
+export const {
+	useFetchProjectsQuery,
+	useCreateProjectMutation,
+	useDeleteProjectMutation,
+	useUpdateProjectMutation,
+	useRenameProjectMutation,
+} = ProjectsAPI;
