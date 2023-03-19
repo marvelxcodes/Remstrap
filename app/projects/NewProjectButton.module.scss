@@ -1,0 +1,63 @@
+.smTxt {
+	font-size: 2rem;
+	padding-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+	.newProjectBtn {
+		height: 4rem;
+		width: 4rem;
+		border-radius: 50%;
+
+		position: fixed;
+		right: 3rem;
+		bottom: 4rem;
+		z-index: 20;
+
+		color: #fff;
+		background-color: #6200ff;
+		box-shadow: 0 0 1rem #80808076;
+	}
+
+	.xlTxt {
+		display: none;
+	}
+}
+@media (min-width: 768px) {
+	.newProjectBtn {
+		height: 3rem;
+		width: 10rem;
+		border-radius: 0.5rem;
+		position: relative;
+
+		font-weight: 500;
+		font-size: 1rem;
+		color: #fff;
+		background-color: #6200ff;
+
+		overflow: hidden;
+		cursor: pointer;
+
+		&::after {
+			width: 2rem;
+			height: 6rem;
+			position: absolute;
+			top: -1.5rem;
+			left: -3rem;
+			rotate: 45deg;
+
+			background-color: #fffefe88;
+			box-shadow: 0 0 1rem;
+
+			content: '';
+			transition: 0.5s;
+		}
+
+		&:hover::after {
+			transform: translate(16rem, -16rem);
+		}
+	}
+	.smTxt {
+		display: none;
+	}
+}
