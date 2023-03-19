@@ -16,7 +16,6 @@ const querySlice = createSlice({
 	name: 'projects',
 	reducers: {
 		setQuery: (state, action: PayloadAction<string>) => {
-			console.log(action);
 			return {
 				query: action.payload,
 				projects: state.projects.filter((project) => {
@@ -34,7 +33,7 @@ const querySlice = createSlice({
 			};
 		},
 
-		delete: (state, action: PayloadAction<string>) => {
+		remove: (state, action: PayloadAction<string>) => {
 			return {
 				...state,
 				projects: state.projects.filter((project) => {
@@ -62,5 +61,6 @@ const querySlice = createSlice({
 	},
 });
 
-export const { setQuery } = querySlice.actions;
+export const { setQuery, create, rename, setProjects, remove } =
+	querySlice.actions;
 export default querySlice.reducer;

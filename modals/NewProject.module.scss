@@ -1,0 +1,98 @@
+.backdrop {
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 30;
+
+	display: grid;
+	place-items: center;
+	backdrop-filter: blur(10px);
+}
+
+.container {
+	width: clamp(10rem, 80vw, 30rem);
+	border-radius: 1rem;
+	padding: 1rem;
+	border: 1px solid #dcdcdc;
+
+	background-color: #fff;
+}
+.projectName {
+	height: 3rem;
+	width: 100%;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin-bottom: 2rem;
+
+	border: 1px solid #d7d7d7;
+
+	font-size: 1.2rem;
+
+	&:focus {
+		border: 1px solid #6200ff;
+	}
+
+	&::placeholder {
+		user-select: none;
+	}
+}
+
+.canvasText {
+	font-weight: 500;
+	color: #878787;
+	user-select: none;
+}
+
+.sizeContainer {
+	padding: 0.5rem 0 1rem 0;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.heightInput,
+.widthInput {
+	height: 3rem;
+	width: clamp(6rem, 50%, 100%);
+	border-radius: 0.5rem;
+	padding: 1rem;
+
+	border: 1px solid #d7d7d7;
+	font-size: 1.2rem;
+
+	&:focus {
+		border: 1px solid #6200ff;
+	}
+
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		display: none;
+	}
+}
+
+.colorInput {
+	height: 3rem;
+	width: 4rem;
+}
+
+.createBtn {
+	width: 100%;
+	height: 3rem;
+	border-radius: 0.5rem;
+
+	position: relative;
+	font-size: 1rem;
+	font-weight: 600;
+	background-color: #6200ff;
+	color: #fff;
+
+	cursor: pointer;
+
+	&:active {
+		background-color: #5100d3;
+	}
+}

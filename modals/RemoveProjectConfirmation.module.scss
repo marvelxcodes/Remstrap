@@ -1,0 +1,62 @@
+.backdrop {
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	display: grid;
+	place-items: center;
+
+	backdrop-filter: blur(10px);
+}
+
+.container {
+	height: 10rem;
+	width: 15rem;
+	border-radius: 1rem;
+	gap: 1rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #fff;
+	box-shadow: 0.3rem 0.3rem 1rem #939393a3;
+
+	user-select: none;
+}
+
+.text {
+	font-size: 1.2rem;
+	color: #5c5c5c;
+}
+
+.buttonsWrapper {
+	display: flex;
+	gap: 1rem;
+}
+
+@mixin Button {
+	height: 2rem;
+	width: 5rem;
+	border-radius: 1rem;
+
+	font-size: 1rem;
+	color: white;
+	cursor: pointer;
+}
+
+.yesButton {
+	@include Button;
+
+	background-color: #6200ff;
+}
+
+.noButton {
+	@include Button;
+
+	background-color: #979797;
+}
