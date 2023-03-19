@@ -10,6 +10,7 @@ export async function GET(req: NextRequest, context: NextContext) {
 				id,
 			},
 			select: {
+				id: true,
 				properties: true,
 				name: true,
 				size: true,
