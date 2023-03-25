@@ -20,7 +20,7 @@ export async function GET(req: Request, context: NextContext) {
 				createdOn: 'desc',
 			},
 		});
-		return NextResponse.json({ projects, success: true });
+		return NextResponse.json(projects);
 	} catch {
 		return NextResponse.json({ success: false });
 	}

@@ -16,10 +16,7 @@ export async function GET(req: NextRequest, context: NextContext) {
 				size: true,
 			},
 		});
-		return NextResponse.json({
-			project,
-			success: true,
-		});
+		return NextResponse.json(project);
 	} catch {
 		return NextResponse.json({
 			success: false,
