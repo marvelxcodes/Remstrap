@@ -15,4 +15,5 @@ export type ProjectType = {
 
 export type NextContext = {
 	params: { [key: string]: string };
+	searchParams: { [key: string]: string };
 };
