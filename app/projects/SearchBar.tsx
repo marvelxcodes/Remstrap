@@ -2,27 +2,42 @@
 import styles from './SearchBar.module.scss';
 import { SearchIcon } from '@/components/Icons';
 import { dispatch } from '@/utils/store';
-import { setQuery } from '@/slices/Projects';
+import { setQuery } from '@/slices/Query';
 import { ChangeEvent } from 'react';
 import useSelect from '@/hooks/useSelect';
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export const SearchBar = () => {
-	const { Projects } = useSelect();
+	const { Query } = useSelect();
 	function changeHandler(event: ChangeEvent<HTMLInputElement>) {
 		dispatch(setQuery(event.currentTarget.value));
 	}
+	const { refresh, push } = useRouter();
+
+	function searchEvent() {
+		push(`projects/?query=${Query}`);
+	}
+
 	return (
-		<div className={styles.wrapper}>
-			<SearchIcon className={styles.searchIcon} />
+		<form
+			onSubmit={(e) => {
+				e.preventDefault();
+				searchEvent();
+			}}
+			className={styles.wrapper}
+		>
 			<input
 				type='text'
-				value={Projects.query}
+				value={Query}
 				placeholder='Search...'
 				className={styles.input}
 				onChange={changeHandler}
 			/>
-			{Projects.query}
-		</div>
+			<span onClick={searchEvent}>
+				<SearchIcon className={styles.searchIcon} />
+			</span>
+		</form>
 	);
 };
 
