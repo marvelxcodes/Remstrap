@@ -1,20 +1,26 @@
 import { configureStore } from '@reduxjs/toolkit';
-import Projects from '@/slices/Projects';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import Query from '@/slices/Query';
 import Alert from '@/slices/Alert';
-import ActiveProject from '@/slices/ActiveProject';
 import Modal from '@/slices/Modal';
+import ActiveProject from '@/slices/ActiveProject';
+import { ProjectsAPI } from '@/slices/Projects';
 
 const store = configureStore({
 	reducer: {
-		Projects,
+		Query,
 		Alert,
 		Modal,
 		ActiveProject,
+		[ProjectsAPI.reducerPath]: ProjectsAPI.reducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(ProjectsAPI.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export default store;
 
-// Types
 export type StateType = ReturnType<typeof store.getState>;
 export const dispatch = store.dispatch;
