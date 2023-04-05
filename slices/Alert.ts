@@ -1,4 +1,3 @@
-import { StateType } from '@/utils/store';
 import { createSlice } from '@reduxjs/toolkit';
 
 const alertSlice = createSlice({
