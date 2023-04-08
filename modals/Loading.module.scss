@@ -1,0 +1,28 @@
+.container {
+	height: 3px;
+	width: 100vw;
+
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+@keyframes loading {
+	from {
+		width: 0;
+		transform: translateX(0vw);
+	}
+	to {
+		width: 100%;
+		transform: translateX(100vw);
+	}
+}
+
+.loader {
+	height: 100%;
+	background-color: #fff;
+	transition: all 0.5s;
+	animation: 2s infinite loading;
+}
