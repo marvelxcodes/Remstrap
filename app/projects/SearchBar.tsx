@@ -3,34 +3,48 @@ import styles from './SearchBar.module.scss';
 import { SearchIcon } from '@/components/Icons';
 import { dispatch } from '@/utils/store';
 import { setQuery } from '@/slices/Query';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useRef } from 'react';
 import useSelect from '@/hooks/useSelect';
 import { useRouter } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
 
 export const SearchBar = () => {
 	const { Query } = useSelect();
+	const searchInputRef = useRef<HTMLInputElement>(null);
+
+	// Focuses the searchbar on pressing "/"
+	useEffect(() => {
+		function SlashToSearch(event: KeyboardEvent) {
+			if (event.key === '/') {
+				event.preventDefault();
+				searchInputRef.current?.focus();
+			}
+		}
+		document.addEventListener('keypress', SlashToSearch);
+		return () => {
+			document.removeEventListener('keypress', SlashToSearch);
+		};
+	}, []);
+
 	function changeHandler(event: ChangeEvent<HTMLInputElement>) {
 		dispatch(setQuery(event.currentTarget.value));
 	}
-	const { refresh, push } = useRouter();
 
-	function searchEvent() {
+	const { push } = useRouter();
+
+	function searchEvent(
+		event: FormEvent<HTMLFormElement> | MouseEvent<HTMLSpanElement>
+	) {
+		event.preventDefault();
 		push(`projects/?query=${Query}`);
 	}
 
 	return (
-		<form
-			onSubmit={(e) => {
-				e.preventDefault();
-				searchEvent();
-			}}
-			className={styles.wrapper}
-		>
+		<form onSubmit={searchEvent} className={styles.wrapper}>
 			<input
+				ref={searchInputRef}
 				type='text'
 				value={Query}
-				placeholder='Search...'
+				placeholder='"/" to Search...'
 				className={styles.input}
 				onChange={changeHandler}
 			/>
