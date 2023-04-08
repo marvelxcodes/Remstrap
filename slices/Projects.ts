@@ -17,7 +17,11 @@ export const ProjectsAPI = createApi({
 
 		// Creates a new Project
 		createProject: builder.mutation({
-			query: (body: { name: string; size: string; userId: string }) => ({
+			query: (body: {
+				name: string;
+				size: string;
+				userId: string;
+			}): any => ({
 				url: '/project',
 				method: 'POST',
 				body,
