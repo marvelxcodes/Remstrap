@@ -8,6 +8,7 @@ const alertSlice = createSlice({
 	name: 'alert',
 	reducers: {
 		openAlert: (state, action) => {
+			// This Condition makes alert open one at a time
 			return state.title ? state : action.payload;
 		},
 		closeAlert: (_state) => {
