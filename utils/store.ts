@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import Query from '@/slices/Query';
 import Alert from '@/slices/Alert';
 import Modal from '@/slices/Modal';
+import Loading from '@/slices/Loading';
 import ActiveProject from '@/slices/ActiveProject';
 import { ProjectsAPI } from '@/slices/Projects';
 
@@ -12,6 +13,7 @@ const store = configureStore({
 		Alert,
 		Modal,
 		ActiveProject,
+		Loading,
 		[ProjectsAPI.reducerPath]: ProjectsAPI.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
