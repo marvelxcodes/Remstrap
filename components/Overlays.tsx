@@ -4,9 +4,14 @@ import { AnimatePresence } from 'framer-motion';
 import NewProjectModal from '@/modals/NewProject';
 import Alert from './Alert';
 import RemoveProjectConfirmation from '@/modals/RemoveProjectConfirmation';
+import Loading from '@/modals/Loading';
 
 const Overlays = () => {
-	const { Alert: AlertState, Modal: ModalState } = useSelect();
+	const {
+		Alert: AlertState,
+		Modal: ModalState,
+		Loading: LoadingState,
+	} = useSelect();
 	return (
 		<AnimatePresence>
 			{AlertState.title && <Alert />}
@@ -14,6 +19,7 @@ const Overlays = () => {
 			{ModalState.currentModal === 'removeprojectconfirmation' && (
 				<RemoveProjectConfirmation />
 			)}
+			{LoadingState && <Loading />}
 		</AnimatePresence>
 	);
 };
