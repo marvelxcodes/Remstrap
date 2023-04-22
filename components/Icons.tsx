@@ -11,6 +11,7 @@ export const SettingsIcon = ({ ...props }: SVGProps<SVGSVGElement>) => (
 		fill='none'
 		viewBox='0 0 24 24'
 		strokeWidth={1.5}
+		className='w-6 h-6'
 		stroke='currentColor'
 		{...props}
 	>
@@ -113,6 +114,7 @@ export const MoreIcon = ({ ...props }: SVGProps<SVGSVGElement>) => {
 			viewBox='0 0 24 24'
 			stroke-width='1.5'
 			stroke='currentColor'
+			className='w-6 h-6'
 			{...props}
 		>
 			<path
@@ -131,6 +133,7 @@ export const LayerIcon = ({ ...props }: SVGProps<SVGSVGElement>) => {
 			fill='none'
 			viewBox='0 0 24 24'
 			strokeWidth={1.5}
+			className='h-6 w-6'
 			stroke='currentColor'
 			{...props}
 		>

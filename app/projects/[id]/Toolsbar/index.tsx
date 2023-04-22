@@ -19,8 +19,8 @@ const Toolsbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<AnimatePresence>
-			<motion.aside>
-				<div>
+			<motion.aside className='flex'>
+				<div className='flex flex-col gap-3'>
 					<Menu name='Background'>
 						<TextIcon />
 					</Menu>

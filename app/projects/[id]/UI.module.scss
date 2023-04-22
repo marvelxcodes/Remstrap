@@ -1,35 +1,4 @@
-@mixin menu {
-	width: 100%;
-	aspect-ratio: 1 / 1;
-	border-radius: 0.25rem;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: -moz-none;
-}
-
-.menuText {
-	color: #fff;
-	font-size: 0.6rem;
-	font-weight: 600;
-}
-
-.menu {
-	@include menu();
-
-	background-color: #00000053;
-}
-
-.selectedMenu {
-	@include menu();
-
-	background-color: #00000070;
+.Menu {
 }
 
 .submenu {
