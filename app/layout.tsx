@@ -1,4 +1,5 @@
 import './globals.scss';
+import '@/utils/tailwind.css';
 import { PropsWithChildren } from 'react';
 import Providers from '@/components/Providers';
 

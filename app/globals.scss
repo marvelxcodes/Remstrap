@@ -1,3 +1,4 @@
+@use './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
@@ -24,5 +25,9 @@ button {
 
 ::selection {
 	color: white;
-	background-color: #6200ff;
+	background-color: variables.$color-primary;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }

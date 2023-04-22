@@ -1,5 +1,5 @@
 const Layer = () => {
-	return <div>Layer</div>;
+	return <div className=''>Layer</div>;
 };
 
 export default Layer;

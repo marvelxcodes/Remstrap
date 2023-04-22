@@ -1,6 +1,6 @@
 'use client';
 import { openModal } from '@/slices/Modal';
-import { remove, rename } from '@/slices/Query';
+import { useRenameProjectMutation } from '@/slices/Projects';
 import { dispatch } from '@/utils/store';
 import { useClerk } from '@clerk/nextjs';
 import Image from 'next/image';
@@ -49,34 +49,28 @@ export const DeleteButton = ({ ...props }) => {
 	);
 };
 
-export type NameInputType = {
-	props: DetailedHTMLProps<
+export interface NameInputType
+	extends DetailedHTMLProps<
 		InputHTMLAttributes<HTMLInputElement>,
 		HTMLInputElement
-	> & {
-		id: string;
-		name: string;
-	};
-};
+	> {
+	id: string;
+	name: string;
+}
 
-export const NameInput = ({ ...props }) => {
-	const [nameInput, setNameInput] = useState(props.name);
-
-	function renameEvent() {
-		dispatch(
-			rename({
-				id: props.id,
-				name: nameInput,
-			})
-		);
+export const NameInput = ({ id, name, ...props }: NameInputType) => {
+	const [nameInput, setNameInput] = useState(name);
+	const [rename] = useRenameProjectMutation();
+	function changeEventHandler() {
+		rename({ id, name: nameInput });
+		console.log('Called');
 	}
-
 	return (
 		<input
-			placeholder={props.name}
+			placeholder={name}
 			maxLength={20}
-			value={nameInput}
-			onChange={(e) => setNameInput(e.currentTarget.value)}
+			defaultValue={name}
+			onChange={changeEventHandler}
 			{...props}
 		/>
 	);

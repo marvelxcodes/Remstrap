@@ -5,35 +5,37 @@ import { MouseEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { openAlert } from '@/slices/Alert';
 import { closeModal } from '@/slices/Modal';
-import useSelect from '@/hooks/useSelect';
 import { useRouter } from 'next/navigation';
 import NumberInput from '@/components/NumberInput';
+import { useUser } from '@clerk/nextjs/app-beta/client';
+import { useCreateProjectMutation } from '@/slices/Projects';
+import { closeLoading, openLoading } from '@/slices/Loading';
 
 const NewProjectModal = () => {
 	const dispatch = useDispatch();
-	const { push } = useRouter();
-	const { Alert } = useSelect();
+	const { push, refresh } = useRouter();
+	const { user } = useUser();
+	const [createProject] = useCreateProjectMutation();
 
-	const createProjectHandler = async (event: any) => {
+	async function createProjectHandler(event: any) {
 		event.preventDefault();
 
-		console.log(event.currentTarget);
-		// Get values from form when submitted
+		// Get values from form on submit
 		const name = event.target[0].value;
-		const width = Number(event.target[1]);
-		const height = Number(event.target[2].value);
-		const bgColor = event.target[3].value;
+		const width = event.target[1].value;
+		const height = event.target[2].value;
 
-		if (name && width && height && bgColor) {
-			const res = await axios.post(`${location.origin}/api/project/create`, {
+		if (name && width && height) {
+			dispatch(openLoading());
+			dispatch(closeModal());
+			const res: any = await createProject({
 				name,
+				userId: user?.id!,
 				size: `${width}x${height}`,
-				bgColor,
-				userId: user?.id,
 			});
-			if (res.data.success) {
-				push(`/project/${res.data.project.id}`);
-			}
+			refresh();
+			push(`/projects/${res.data.id}`);
+			dispatch(closeLoading());
 		} else {
 			dispatch(
 				openAlert({
@@ -42,7 +44,7 @@ const NewProjectModal = () => {
 				})
 			);
 		}
-	};
+	}
 
 	function closeHandler(event: MouseEvent<HTMLDivElement>) {
 		dispatch(closeModal());

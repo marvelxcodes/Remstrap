@@ -1,5 +1,5 @@
 'use client';
-import styles from './SearchBar.module.scss';
+import styles from './index.module.scss';
 import { SearchIcon } from '@/components/Icons';
 import { dispatch } from '@/utils/store';
 import { setQuery } from '@/slices/Query';

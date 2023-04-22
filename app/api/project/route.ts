@@ -77,18 +77,21 @@ export async function DELETE(req: NextRequest) {
 		projectId: string;
 	};
 	try {
+		await prisma.properties.delete({
+			where: {
+				projectId,
+			},
+		});
 		await prisma.project.delete({
 			where: {
 				id: projectId,
 			},
-			include: {
-				properties: true,
-			},
 		});
+
 		return NextResponse.json({
 			success: true,
 		});
-	} catch {
+	} catch (error) {
 		return NextResponse.json({
 			success: false,
 		});

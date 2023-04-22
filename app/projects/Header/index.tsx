@@ -1,5 +1,5 @@
-import styles from './Header.module.scss';
-import { ProfileImage } from './UI';
+import styles from './index.module.scss';
+import { ProfileImage } from '../UI';
 import { FAQIcon, SettingsIcon } from '@/components/Icons';
 
 const Header = () => {

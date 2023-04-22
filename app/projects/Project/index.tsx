@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import styles from './Project.module.scss';
+import styles from './index.module.scss';
 import Link from 'next/link';
-import { ProjectType } from '@/utils/types';
+import { ProjectsType } from '@/utils/types';
 import useDate from '@/hooks/useDate';
-import { DeleteButton, NameInput } from './UI';
+import { DeleteButton, NameInput } from '../UI';
 
-const Project = (props: ProjectType) => {
+const Project = (props: ProjectsType) => {
 	const date = useDate(props.createdOn);
 	return (
-		<div className={styles.container}>
+		<div key={props.id} className={styles.container}>
 			<div className={styles.imageWrapper}>
 				<Image
 					className={styles.image}
@@ -20,7 +20,11 @@ const Project = (props: ProjectType) => {
 				/>
 			</div>
 			<div className={styles.textWrapper}>
-				<NameInput {...props} className={styles.name} />
+				<NameInput
+					id={props.id}
+					name={props.name}
+					className={styles.name}
+				/>
 				<div className={styles.descWrapper}>
 					<div>
 						<h3 className={styles.dimension}>{`${props.size} px`}</h3>
@@ -30,9 +34,7 @@ const Project = (props: ProjectType) => {
 				</div>
 			</div>
 			<Link href={`/projects/${props.id}`}>
-				<button {...props} className={styles.btn}>
-					Open in Editor
-				</button>
+				<button className={styles.btn}>OPEN IN EDITOR</button>
 			</Link>
 		</div>
 	);

@@ -1,7 +1,7 @@
 'use client';
 import { dispatch } from '@/utils/store';
 import { openModal } from '@/slices/Modal';
-import styles from './NewProjectButton.module.scss';
+import styles from './index.module.scss';
 
 const NewProjectBtn = () => {
 	function clickHandler() {
