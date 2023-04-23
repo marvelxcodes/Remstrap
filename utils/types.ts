@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export type ProjectsType = {
 	id: string;
 	name: string;
@@ -16,4 +18,9 @@ export type ProjectType = {
 export type NextContext = {
 	params: { [key: string]: string };
 	searchParams: { [key: string]: string };
+};
+
+export type StatePropsType<T> = {
+	state: T;
+	setState: Dispatch<SetStateAction<T>>;
 };
