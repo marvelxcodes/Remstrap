@@ -34,7 +34,7 @@ const Project = (props: ProjectsType) => {
 				</div>
 			</div>
 			<Link href={`/projects/${props.id}`}>
-				<button className={styles.btn}>OPEN IN EDITOR</button>
+				<button className={styles.openProjectBtn}>OPEN IN EDITOR</button>
 			</Link>
 		</div>
 	);
