@@ -17,7 +17,7 @@
 	}
 	&::-webkit-slider-runnable-track {
 		background-color: #000;
-		box-shadow: 0 0 0.5rem 0.1rem #525252;
+		box-shadow: 0 0 0.1rem 1px #525252;
 		border: 1px solid #525252;
 
 		border-radius: 10px;
@@ -28,6 +28,6 @@
 	}
 
 	&::-webkit-slider-runnable-track:active {
-		background-color: #aaa;
+		background-color: #4f4f4f;
 	}
 }
