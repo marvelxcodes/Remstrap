@@ -25,7 +25,7 @@ export function Menu({ name, children }: MenuPropsType) {
 			className={isSelected ? styles.selectedMenu : styles.menu}
 		>
 			{children}
-			<span className={styles.menuText}>{name}</span>
+			<span className={styles.tooltip}>{name}</span>
 		</div>
 	);
 }
@@ -38,8 +38,8 @@ export interface SubMenuPropsType {
 export function SubMenu({ name, children }: SubMenuPropsType) {
 	return (
 		<div className={styles.submenu}>
+			<span className={styles.label}>{name}</span>
 			{children}
-			<span>{name}</span>
 		</div>
 	);
 }
