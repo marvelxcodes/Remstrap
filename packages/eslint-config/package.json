@@ -1,0 +1,14 @@
+{
+  "name": "eslint-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.23.3"
+  }
+}
